@@ -284,32 +284,38 @@
             const message = document.getElementById("message").value.trim();
 
             const text = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
-            const phone = "916374023707"; 
+            const phone = "8141373845"; 
             const link = `https://wa.me/${phone}?text=${text}`;
 
             window.open(link, "_blank");
         }
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
+           document.getElementById("contact").addEventListener("submit", function(e) {
+           e.preventDefault();
 
-            // Replace this with your FormSubmit endpoint
-            const formAction = "https://formsubmit.co/palatul8141@gmail.com";
-
-            const formData = new FormData(form);
-            fetch(formAction, {
-                method: "POST",
-                body: formData,
-            })
-                .then(() => {
-                    alert("Email sent successfully!");
-                    form.reset();
-                })
-                .catch(() => {
-                    alert("Failed to send email.");
-                });
-        }
+           fetch("https://formsubmit.co/ajax/palatul8141@gmail.com", {
+           method: "POST",
+           headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json'
+           },
+           body: JSON.stringify({
+               name: document.querySelector("[name='name']").value,
+               email: document.querySelector("[name='email']").value,
+               message: document.querySelector("[name='message']").value
+         })
+     })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            alert(" Email sent successfully!");
+            e.target.reset();
+       })
+        .catch(error => {
+         console.error(error);
+         alert(" Failed to send email.");
+       });
+       });
     </script>
 </body>
 
