@@ -161,29 +161,6 @@ body {
   color: #fff;
 }
 
-.hero-right {
-  flex: 1 1 400px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-}
-
-.hero-right img {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  transition: transform 0.4s ease;
-}
-
-.hero-right img:hover {
-  transform: scale(1.05);
-}
-
 /* About Section */
 .about-section {
  padding: 80px 20px;
